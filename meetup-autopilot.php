@@ -115,7 +115,7 @@ $venue_zip $venue_city\n
 $event_description\n
 \n
 ---
-Wir sind der Treffpunkt für die WordPress Community im Großraum Nürnberg (Anwendertreff/Usergroup) und treffen uns in der Regel jeden dritten Donnerstag im Monat ab 19:00 Uhr im CoWorking Nürnberg.\n
+Wir sind der Treffpunkt für die WordPress Community im Großraum Würzburg (Anwendertreff/Usergroup) und treffen uns in der Regel jeden dritten Dienstag im Monat ab 19:00 Uhr im CoWorking Würzburg, Veitshöchheimerstrasse 14.\n
 \n
 Unser WordPress-Treffen ist offen für alle Interessierten, egal ob Anwender/in, Entwickler/in, Student/in oder Unternehmer/in. Bei uns ist jeder willkommen, der Wissensstand ist bunt gemischt und wir freuen uns immer über neue Gesichter.\n
 \n
@@ -123,7 +123,7 @@ Bei unseren Treffen geht es meistens ca. 1 Std. um ein bestimmtes Thema und dana
 \n
 Bitte hier anmelden: <a href="$meetup_url">$meetup_url</a>\n
 \n
-Weitere Infos hier: <a href="https://wpmeetup-nuernberg.de">https://wpmeetup-nuernberg.de</a> oder auf Twitter: https://twitter.com/wpnue\n
+Weitere Infos hier: <a href="https://wpmeetup-wuerzburg.de">https://wpmeetup-wuerzburg.de</a> oder auf Twitter: https://twitter.com/wpwue\n
 \n
 Alle WordPress Meetups im deutschsprachigen Raum findet man hier: <a href="http://wpmeetups.de/">http://wpmeetups.de/</a>\n
 \n
@@ -134,7 +134,7 @@ END;
                         'post_content'  => $text,
                         'post_status'   => 'publish',
                         'post_author'   => 1,
-                        'post_category' => array( 18 ) // Termine
+                        'post_category' => array( 13 ) // Termine
                     );
 
                     $gen_post = wp_insert_post( $my_post );
@@ -207,7 +207,7 @@ END;
 
                     $text = <<<END
 
-Beim WordPress Meetup Nürnberg hat xxxx am $datum  xxxxx vorgestellt.\n
+Beim WordPress Meetup Würzburg hat xxxx am $datum  xxxxx vorgestellt.\n
 \n
 <blockquote>$event_description</blockquote>\n
 \n
@@ -222,7 +222,7 @@ END;
                         'post_content'  => $text,
                         'post_status'   => 'draft',
                         'post_author'   => 1,
-                        'post_category' => array( 20 ) // Nachbereitung
+                        'post_category' => array( 14 ) // Nachbetrachtung
                     );
 
                     $gen_post = wp_insert_post( $my_post );
