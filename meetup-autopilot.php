@@ -4,12 +4,12 @@
  * Plugin Name: Meetup Autopilot
  * Plugin URI: https:/staude.net/
  * Description: Generate Posts from "The Events Calendar" Events
- * Version: 0.1.1
+ * Version: 0.2
  * Author: Frank Neumann-Staude
  * Author URI: https://staude.net
  * Compatibility: WordPress 4.9.9
- * GitHub Plugin URI: https://github.com/staude/Meetup-Autopilot
- * GitHub Branch: master
+ * GitHub Plugin URI: https://github.com/stk/Meetup-Autopilot
+ * GitHub Branch: diani
  *
  */
 
@@ -115,17 +115,15 @@ $venue_zip $venue_city\n
 $event_description\n
 \n
 ---
-Wir sind der Treffpunkt für die WordPress Community im Großraum Würzburg (Anwendertreff/Usergroup) und treffen uns in der Regel jeden dritten Dienstag im Monat ab 19:00 Uhr im CoWorking Würzburg, Veitshöchheimerstrasse 14.\n
+We're the WordPress Meetup in Diani Beach, Kenya (Community/User Group) and meet regularly every month on the -tba- day from -tba- time at the Coast-Working Diani Beach at Lotfa Resort, Diani Beach Rd/Mvindeni Rd.\n
 \n
-Unser WordPress-Treffen ist offen für alle Interessierten, egal ob Anwender/in, Entwickler/in, Student/in oder Unternehmer/in. Bei uns ist jeder willkommen, der Wissensstand ist bunt gemischt und wir freuen uns immer über neue Gesichter.\n
+Our WordPress Meetup is open for everyone interested, no matter if user, developer, student or entrepreneur. Everyone is welcome, the level of knowledge is mixed and we are always happy to see new faces.\n
 \n
-Bei unseren Treffen geht es meistens ca. 1 Std. um ein bestimmtes Thema und danach ist eine offene Diskussions/Austauschrunde für alle WordPress Themen. Wir schauen aber auch gerne mal über den Tellerrand.\n
+Our meetings last usually about 1 hour, mostly about a specific topic, followed by an open discussion / exchange for all WordPress topics. But we also like to look outside the box.\n
 \n
-Bitte hier anmelden: <a href="$meetup_url">$meetup_url</a>\n
+Kindly RSVP here: <a href="$meetup_url">$meetup_url</a>\n
 \n
-Weitere Infos hier: <a href="https://wpmeetup-wuerzburg.de">https://wpmeetup-wuerzburg.de</a> oder auf Twitter: https://twitter.com/wpwue\n
-\n
-Alle WordPress Meetups im deutschsprachigen Raum findet man hier: <a href="http://wpmeetups.de/">http://wpmeetups.de/</a>\n
+More info are to be found at: <a href="https://wpmeetup-diani.co.ke">https://wpmeetup-diani.co.ke</a> oder auf Twitter: https://twitter.com/wpmdiani\n
 \n
 END;
 
@@ -134,7 +132,7 @@ END;
                         'post_content'  => $text,
                         'post_status'   => 'publish',
                         'post_author'   => 1,
-                        'post_category' => array( 13 ) // Termine
+                        'post_category' => array( 4 ) // Dates
                     );
 
                     $gen_post = wp_insert_post( $my_post );
@@ -207,13 +205,13 @@ END;
 
                     $text = <<<END
 
-Beim WordPress Meetup Würzburg hat xxxx am $datum  xxxxx vorgestellt.\n
+At WordPress Meetup Diani ---speaker--- presented on $datum ---topic---.\n
 \n
 <blockquote>$event_description</blockquote>\n
 \n
 ---\n
 \n
-Hier Bericht bzw Slideshare/WordPressTV Link einfügen.\n
+---link to slideshare/wordpress.tv---.\n
 \n
 END;
 
@@ -222,7 +220,7 @@ END;
                         'post_content'  => $text,
                         'post_status'   => 'draft',
                         'post_author'   => 1,
-                        'post_category' => array( 14 ) // Nachbetrachtung
+                        'post_category' => array( 5 ) // Recap
                     );
 
                     $gen_post = wp_insert_post( $my_post );
