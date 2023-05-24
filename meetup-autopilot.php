@@ -4,11 +4,11 @@
  * Plugin Name: Meetup Autopilot
  * Plugin URI: https:/staude.net/
  * Description: Generate Posts from "The Events Calendar" Events
- * Version: 0.2
+ * Version: 0.2.2
  * Author: Frank Neumann-Staude
  * Author URI: https://staude.net
- * Compatibility: WordPress 4.9.9
- * GitHub Plugin URI: https://github.com/stk/Meetup-Autopilot
+ * Compatibility: WordPress 6.2.2
+ * GitHub Plugin URI: https://github.com/stkjj/Meetup-Autopilot
  * GitHub Branch: diani
  *
  */
@@ -101,30 +101,43 @@ if (!class_exists( 'meetup_autopilot' ) ) {
                     $meetup_url = $event_meetup_url;
 
                     $text = <<<END
+                    
+<!-- wp:heading -->
+<h2>$event_name</h2>
+<!-- /wp:heading -->
 
+<!-- wp:paragraph -->
+<p>Date: $tag, $datum<br>Time: $start $ende<br>Venue: $venue_name, $venue_address, $venue_zip $venue_city</p>
+<!-- /wp:paragraph -->
 
-$event_name \n
-\n
-$tag, $datum\n
-$start $ende Uhr\n
-$venue_name\n
-$venue_address\n
-$venue_zip $venue_city\n
-\n
-\n
-$event_description\n
-\n
----
-We're the WordPress Meetup in Diani Beach, Kenya (Community/User Group) and meet regularly every month on the -tba- day from -tba- time at the Coast-Working Diani Beach at Lotfa Resort, Diani Beach Rd/Mvindeni Rd.\n
-\n
-Our WordPress Meetup is open for everyone interested, no matter if user, developer, student or entrepreneur. Everyone is welcome, the level of knowledge is mixed and we are always happy to see new faces.\n
-\n
-Our meetings last usually about 1 hour, mostly about a specific topic, followed by an open discussion / exchange for all WordPress topics. But we also like to look outside the box.\n
-\n
-Kindly RSVP here: <a href="$meetup_url">$meetup_url</a>\n
-\n
-More info are to be found at: <a href="https://wpmeetup-diani.co.ke">https://wpmeetup-diani.co.ke</a> oder auf Twitter: https://twitter.com/wpmdiani\n
-\n
+<!-- wp:paragraph -->
+<p>$event_description</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator -->
+
+<!-- wp:paragraph -->
+<p>We are the WordPress Community of Diani Beach. Generally we'll meet monthly every 4. Thursday from 5:00 pm at the Coast Working Diani Beach, Diani Beach Rd. @ Lotfa Resort.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Our meetups are open for everyone interested, no matter if user, developer, designer or entrepreneur. Feel welcome in our diverse group with various skill and knowledge levels.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We try to cover a specific topic (we are open for requests!) within the first hour. After this we will have an open discussion of all matters WordPress and related things.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Please RSVP here: <a href="$meetup_url">$meetup_url</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>More info can be found on our <a href="https://wpmeetup-dianibeach.or.ke">website</a>, on <a href="https://twitter.com/WPMeetupDiani">Twitter</a>, <a href="https://facebook.com/wepmeetupdianibeach">Facebook</a> or <a>Meetup.com</a></p>
+<!-- /wp:paragraph -->
+
 END;
 
                     $my_post = array(
@@ -205,14 +218,23 @@ END;
 
                     $text = <<<END
 
-At WordPress Meetup Diani ---speaker--- presented on $datum ---topic---.\n
-\n
-<blockquote>$event_description</blockquote>\n
-\n
----\n
-\n
----link to slideshare/wordpress.tv---.\n
-\n
+<!-- wp:paragraph -->
+<p>The presentation about xxxx at WordPress Meetup Diani Beach on $datum was held by xxxxx.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><!-- wp:paragraph -->
+<p>$event_description</p>
+<!-- /wp:paragraph --></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator -->
+
+<!-- wp:paragraph -->
+<p>Link to SlideShare/WP-TV …</p>
+<!-- /wp:paragraph -->
 END;
 
                     $my_post = array(
