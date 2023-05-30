@@ -4,7 +4,7 @@
  * Plugin Name: Meetup Autopilot
  * Plugin URI: https:/staude.net/
  * Description: Generate Posts from "The Events Calendar" Events
- * Version: 0.2.2
+ * Version: 0.2.3
  * Author: Frank Neumann-Staude
  * Author URI: https://staude.net
  * Compatibility: WordPress 6.2.2
@@ -95,7 +95,7 @@ if (!class_exists( 'meetup_autopilot' ) ) {
                         $endts = '';
                     } else {
                         $endts = strtotime( $event_end );
-                        $ende = ' bis ' . strftime( '%H:%M', $endts );
+                        $ende = ' until ' . strftime( '%H:%M', $endts );
                     }
                     $event_meetup_url = get_metadata( 'post', $event_id, '_EventURL', true );
                     $meetup_url = $event_meetup_url;
@@ -211,7 +211,7 @@ END;
                         $endts = '';
                     } else {
                         $endts = strtotime( $event_end );
-                        $ende = ' bis ' . strftime( '%H:%M', $endts );
+                        $ende = ' until ' . strftime( '%H:%M', $endts );
                     }
                     $event_meetup_url = get_metadata( 'post', $event_id, '_EventURL', true );
                     $meetup_url = $event_meetup_url;
