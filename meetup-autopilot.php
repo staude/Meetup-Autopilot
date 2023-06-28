@@ -4,12 +4,12 @@
  * Plugin Name: Meetup Autopilot
  * Plugin URI: https:/staude.net/
  * Description: Generate Posts from "The Events Calendar" Events
- * Version: 0.1.1
+ * Version: 0.2.3
  * Author: Frank Neumann-Staude
  * Author URI: https://staude.net
- * Compatibility: WordPress 4.9.9
- * GitHub Plugin URI: https://github.com/staude/Meetup-Autopilot
- * GitHub Branch: master
+ * Compatibility: WordPress 6.2.2
+ * GitHub Plugin URI: https://github.com/stkjj/Meetup-Autopilot
+ * GitHub Branch: diani
  *
  */
 
@@ -95,38 +95,49 @@ if (!class_exists( 'meetup_autopilot' ) ) {
                         $endts = '';
                     } else {
                         $endts = strtotime( $event_end );
-                        $ende = ' bis ' . strftime( '%H:%M', $endts );
+                        $ende = ' until ' . strftime( '%H:%M', $endts );
                     }
                     $event_meetup_url = get_metadata( 'post', $event_id, '_EventURL', true );
                     $meetup_url = $event_meetup_url;
 
                     $text = <<<END
+                    
+<!-- wp:heading -->
+<h2>$event_name</h2>
+<!-- /wp:heading -->
 
+<!-- wp:paragraph -->
+<p>Date: $tag, $datum<br>Time: $start $ende<br>Venue: $venue_name, $venue_address, $venue_zip $venue_city</p>
+<!-- /wp:paragraph -->
 
-$event_name \n
-\n
-$tag, $datum\n
-$start $ende Uhr\n
-$venue_name\n
-$venue_address\n
-$venue_zip $venue_city\n
-\n
-\n
-$event_description\n
-\n
----
-Wir sind der Treffpunkt für die WordPress Community im Großraum Nürnberg (Anwendertreff/Usergroup) und treffen uns in der Regel jeden dritten Donnerstag im Monat ab 19:00 Uhr im CoWorking Nürnberg.\n
-\n
-Unser WordPress-Treffen ist offen für alle Interessierten, egal ob Anwender/in, Entwickler/in, Student/in oder Unternehmer/in. Bei uns ist jeder willkommen, der Wissensstand ist bunt gemischt und wir freuen uns immer über neue Gesichter.\n
-\n
-Bei unseren Treffen geht es meistens ca. 1 Std. um ein bestimmtes Thema und danach ist eine offene Diskussions/Austauschrunde für alle WordPress Themen. Wir schauen aber auch gerne mal über den Tellerrand.\n
-\n
-Bitte hier anmelden: <a href="$meetup_url">$meetup_url</a>\n
-\n
-Weitere Infos hier: <a href="https://wpmeetup-nuernberg.de">https://wpmeetup-nuernberg.de</a> oder auf Twitter: https://twitter.com/wpnue\n
-\n
-Alle WordPress Meetups im deutschsprachigen Raum findet man hier: <a href="http://wpmeetups.de/">http://wpmeetups.de/</a>\n
-\n
+<!-- wp:paragraph -->
+<p>$event_description</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator -->
+
+<!-- wp:paragraph -->
+<p>We are the WordPress Community of Diani Beach. Generally we'll meet monthly every 4. Thursday from 5:00 pm at the Coast Working Diani Beach, Diani Beach Rd. @ Lotfa Resort.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Our meetups are open for everyone interested, no matter if user, developer, designer or entrepreneur. Feel welcome in our diverse group with various skill and knowledge levels.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We try to cover a specific topic (we are open for requests!) within the first hour. After this we will have an open discussion of all matters WordPress and related things.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Please RSVP here: <a href="$meetup_url">$meetup_url</a></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>More info can be found on our <a href="https://wpmeetup-dianibeach.or.ke">website</a>, on <a href="https://twitter.com/WPMeetupDiani">Twitter</a>, <a href="https://facebook.com/wepmeetupdianibeach">Facebook</a> or <a>Meetup.com</a></p>
+<!-- /wp:paragraph -->
+
 END;
 
                     $my_post = array(
@@ -134,7 +145,7 @@ END;
                         'post_content'  => $text,
                         'post_status'   => 'publish',
                         'post_author'   => 1,
-                        'post_category' => array( 18 ) // Termine
+                        'post_category' => array( 4 ) // Dates
                     );
 
                     $gen_post = wp_insert_post( $my_post );
@@ -200,21 +211,30 @@ END;
                         $endts = '';
                     } else {
                         $endts = strtotime( $event_end );
-                        $ende = ' bis ' . strftime( '%H:%M', $endts );
+                        $ende = ' until ' . strftime( '%H:%M', $endts );
                     }
                     $event_meetup_url = get_metadata( 'post', $event_id, '_EventURL', true );
                     $meetup_url = $event_meetup_url;
 
                     $text = <<<END
 
-Beim WordPress Meetup Nürnberg hat xxxx am $datum  xxxxx vorgestellt.\n
-\n
-<blockquote>$event_description</blockquote>\n
-\n
----\n
-\n
-Hier Bericht bzw Slideshare/WordPressTV Link einfügen.\n
-\n
+<!-- wp:paragraph -->
+<p>The presentation about xxxx at WordPress Meetup Diani Beach on $datum was held by xxxxx.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:quote -->
+<blockquote class="wp-block-quote"><!-- wp:paragraph -->
+<p>$event_description</p>
+<!-- /wp:paragraph --></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:separator -->
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+<!-- /wp:separator -->
+
+<!-- wp:paragraph -->
+<p>Link to SlideShare/WP-TV …</p>
+<!-- /wp:paragraph -->
 END;
 
                     $my_post = array(
@@ -222,7 +242,7 @@ END;
                         'post_content'  => $text,
                         'post_status'   => 'draft',
                         'post_author'   => 1,
-                        'post_category' => array( 20 ) // Nachbereitung
+                        'post_category' => array( 5 ) // Recap
                     );
 
                     $gen_post = wp_insert_post( $my_post );
